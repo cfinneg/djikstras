@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
                 source = source_new;
                 destination = destination_new;
                 flag = flag_new;
-                djikstra(n, A, source, destination, flag);
+                dijkstra(n, A, source, destination, flag);
             }
         }
         else if (0 == strcmp(word, "write")) {

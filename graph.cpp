@@ -33,7 +33,22 @@ void printPath(int n, int source, int destination, int s, int t) {
     while (V[v].pi) {
         u = V[v].pi;
         pNode = (PATH *) malloc(sizeof(PATH));
+        pNode->vertex = u;
+        pNode->next =pPATH;
+        pPATH = pNode;
+        v =pNode->vertex;
     }
+    pNode = pPATH;
+    pPATH = pPATH->next;
+    free(pNode);
+    while(pPATH) {
+        pNode = pPATH;
+        printf(", %d", pNode->vertex);
+        pPATH = pPATH->next;
+        free(pNode);
+    }
+    printf(">\n");
+    printf("The path weight is: %12.4f\n", V[t].dist);
 }
 
 int dijkstra(int n, pNODE *A, int s, int t, int flag) {
@@ -75,8 +90,36 @@ int dijkstra(int n, pNODE *A, int s, int t, int flag) {
         free(element);
         node = A[u];
         while (node) {
+            
             v = node->v;
+            w = node->w;
+            if(V[v].color == 0) {
+                V[v].dist = V[u].dist + w;
+                V[v].pi = u;
+                V[v].color =1;
+                V[v].pos = heap->size + 1;
+                element = (ELEMENT *) malloc(sizeof(ELEMENT));
+                element->vertex = v;
+                element->key = V[v].dist;
+                HeapInsert(heap, element);
+                if (flag == 1) {
+                    //print insertion info
+                    printf("Insert vertex %d, key = %12.4f\n", element->vertex, element->key);
+                }
+            }
+            else if (V[v].dist > V[u].dist + w) {
+                float old = V[v].dist;
+                V[v].dist = V[u].dist + w;
+                V[v].pi = u;
+                DecreaseKey(heap,V[v].pos,V[v].dist);
+                if (flag == 1) {
+                    //print decrease key info
+                    printf("Decrease key of vertex %d, from %12.4f to %12.4f\n", v, old, V[v].dist);
+                }
+            }
+            node = node->next;
         }
     }
+    return 0;
 
 }

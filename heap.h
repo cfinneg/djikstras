@@ -27,7 +27,7 @@ int minHeapCount();
 HEAP * extractMin(HEAP * heap);
 int extractedKey();
 int HeapInsert(HEAP * heap, ELEMENT * e);
-int DecreaseKey(HEAP * heap, int i, int val);
+int DecreaseKey (HEAP *heap, int pos, float newKey);
 void MovingUp (HEAP *heap, int pos);
 pELEMENT DeleteMin(HEAP *heap, int *flag, int *count_Heapify);
 

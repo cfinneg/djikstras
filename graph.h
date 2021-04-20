@@ -28,6 +28,6 @@ typedef struct TAG_PATH{
 }PATH;
 
 void printPath(int n, int source, int destination, int s, int t);
-int djikstra(int n, pNODE *A, int s, int t, int flag);
+int dijkstra(int n, pNODE *A, int s, int t, int flag);
 
 #endif
