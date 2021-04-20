@@ -74,7 +74,7 @@ int dijkstra(int n, pNODE *A, int s, int t, int flag) {
     HeapInsert(heap, element);
     if (flag == 1) {
         //print insertion info
-        printf("Insert vertex %d, key = %12.4f\n", element->vertex, element->key);
+        printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
     }
     while (heap->size) {
         element = DeleteMin(heap, &flag, &count_Heapify);
@@ -104,7 +104,7 @@ int dijkstra(int n, pNODE *A, int s, int t, int flag) {
                 HeapInsert(heap, element);
                 if (flag == 1) {
                     //print insertion info
-                    printf("Insert vertex %d, key = %12.4f\n", element->vertex, element->key);
+                    printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
                 }
             }
             else if (V[v].dist > V[u].dist + w) {
