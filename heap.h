@@ -24,7 +24,6 @@ void printHeap(HEAP heap);
 HEAP * buildHeap(HEAP * heap);
 ELEMENT** minHeapify(HEAP * heap, int i);
 int minHeapCount();
-HEAP * extractMin(HEAP * heap);
 int extractedKey();
 int HeapInsert(HEAP * heap, ELEMENT * e);
 int DecreaseKey (HEAP *heap, int pos, float newKey);

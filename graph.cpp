@@ -107,6 +107,7 @@ int dijkstra(int n, pNODE *A, int s, int t, int flag) {
                     printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
                 }
                 
+                
             }
             else if (V[v].dist > V[u].dist + w) {
                 float old = V[v].dist;
@@ -117,10 +118,15 @@ int dijkstra(int n, pNODE *A, int s, int t, int flag) {
                     //print decrease key info
                     printf("Decrease key of vertex %d, from %12.4f to %12.4f\n", v, old, V[v].dist);
                 }
+                
             }
-            node = node->next;
-        }
-    }
-    return 0;
 
+            node = node->next;
+            
+            
+        }
+        
+    }
+    free(heap);
+    return 0;
 }

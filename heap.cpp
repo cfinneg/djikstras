@@ -27,7 +27,7 @@ void printHeap(HEAP heap) {
         return;
     }
     for (int j = 0; j < heap.size; j++) {
-        printf("%d",heap.H[j]->key);
+        printf("%f",heap.H[j]->key);
         if (j != heap.size - 1) {
             printf(", ");
         }
@@ -71,16 +71,6 @@ ELEMENT** minHeapify(HEAP * heap, int i) {
     return A;
 } 
 
-HEAP * extractMin(HEAP * heap) {
-    minheaps = 0;
-    ELEMENT** A = heap->H;
-    extracted = A[0]->key;
-    A[0]->key = A[heap->size-1]->key;
-    heap->size--;
-    heap->H = A;
-    heap->H = minHeapify(heap,1);
-    return heap;
-}
 
 int HeapInsert(HEAP *heap, pELEMENT item) {
     if (heap->size >= heap->capacity) {
@@ -102,6 +92,7 @@ int DecreaseKey (HEAP *heap, int pos, float newKey) {
 
     heap->H[pos]->key = newKey;
     MovingUp(heap, pos);
+    return 1;
 }
 
 void MovingUp (HEAP *heap, int pos) {
@@ -123,7 +114,7 @@ pELEMENT DeleteMin(HEAP *heap, int *flag, int *count_Heapify) {
         printf("Error in DeleteMin: heap empty\n");
         return NULL;
     }
-    min = heap->H[1];
+    min = heap->H[1]; 
     last = heap->H[heap->size--];
     heap->H[1] = last;
     V[heap->H[1]->vertex].pos =1;
