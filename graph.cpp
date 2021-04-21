@@ -106,6 +106,7 @@ int dijkstra(int n, pNODE *A, int s, int t, int flag) {
                     //print insertion info
                     printf("Insert vertex %d, key=%12.4f\n", element->vertex, element->key);
                 }
+                
             }
             else if (V[v].dist > V[u].dist + w) {
                 float old = V[v].dist;
